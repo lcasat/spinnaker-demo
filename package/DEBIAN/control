@@ -1,5 +1,5 @@
 Package: spinnaker-demo
-Architecture: all
+Architecture: amd64
 Maintainer: spinnaker-demo devs <spinnaker-demo@example.com>
 Section: misc
 Priority: optional
