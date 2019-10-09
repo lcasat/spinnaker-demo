@@ -27,11 +27,20 @@ echo "Updating version to ${fullversion}..."
 sed -i s/VERSION/${fullversion}/ $htmlDir/index.html
 sed -i s/VERSION/${fullversion}/ $htmlDir/health
 
-echo "Packaging..."
+echo "Packaging Started..."
 sleep 2
 ./package.sh $fullversion
+echo "Packaging finished.."
+
 
 # Expect $BUCKET, $ACCESS_KEY_ID, $SECRET_ACCESS_KEY to be set in Jenkins 
 # credentials and fetched in pipeline.
+
+echo "Upload to S3 Started...."
+echo "Bucket Name: "$BUCKET
+echo "Access Key: " $ACCESS_KEY_ID
+echo "Secret Key: " $SECRET_ACCESS_KEY
+
 PACKAGE_PATH=build
 deb-s3 upload --bucket $BUCKET --access-key-id $ACCESS_KEY_ID --secret-access-key $SECRET_ACCESS_KEY --s3-region us-east-2 --arch amd64 --codename trusty --preserve-versions true $PACKAGE_PATH/*.deb
+echo "Build completed..."
