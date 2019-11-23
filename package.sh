@@ -22,7 +22,7 @@ mv build/html/* $debdir/opt/spinnaker-demo/
 
 # Version:
 sed -i "s/VERSION/$1/" $debdir/DEBIAN/control
-echo "Building version $1"
+echo "Building the version $1"
 
 # build it in 'build' so cleanup is easier (delete the build dir)
 cd build
